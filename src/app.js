@@ -11,7 +11,6 @@ class App {
     this.configureMiddleware();
     this.configureRouters();
     this.connectDatabase();
-    this.PORT = port;
   }
 
   configureServer() {
