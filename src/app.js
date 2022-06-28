@@ -6,7 +6,7 @@ import auth from "./routes/auth.routes.js";
 import post from "./routes/post.routes.js";
 
 class App {
-  constructor(port = 3030) {
+  constructor() {
     this.configureServer();
     this.configureMiddleware();
     this.configureRouters();
@@ -55,8 +55,8 @@ class App {
   }
 
   start() {
-    this.app.listen(this.PORT, () =>
-      console.log(`Server running on PORT ${this.PORT}`)
+    this.app.listen(process.env.PORT || 3030, () =>
+      console.log(`Server running on PORT ${process.env.PORT || 3030}`)
     );
   }
 }
