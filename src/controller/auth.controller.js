@@ -48,7 +48,7 @@ export const signup = async (req, res) => {
       from: "avashmitra007@gmail.com",
       subject: "Visit the link to activate your account",
       text: "Visit the link to activate your account",
-      html: `<a href = "http://localhost:3000/verify/${user.verificationToken}">Click here</a>`,
+      html: `<a href = "https://cloak-gilt.vercel.app/verify/${user.verificationToken}">Click here</a>`,
     };
 
     await sgMail.send(msg);
