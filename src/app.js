@@ -29,6 +29,9 @@ class App {
   configureRouters() {
     this.app.use("/api", auth);
     this.app.use("/api", post);
+    this.app.get("/test", (req, res) => {
+      res.send("Hello World");
+    });
   }
 
   connectDatabase() {
