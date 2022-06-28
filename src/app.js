@@ -35,7 +35,7 @@ class App {
   }
 
   connectDatabase() {
-    if (process.env.env.NODE_ENV === "PRODUCTION") {
+    if (process.env.NODE_ENV === "PRODUCTION") {
       database.connect({
         connectionString: process.env.DATABASE_URL,
         ssl: {
