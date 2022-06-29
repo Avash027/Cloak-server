@@ -11,12 +11,11 @@ export default async function authMiddleware(req, res, next) {
       process.env.SECRET
     );
 
-    console.log(admin);
-
     req.uid = uid;
     req.admin = admin;
     next();
   } catch (error) {
+    console.log(error);
     res.status(400).send("Unauthorized");
   }
 }

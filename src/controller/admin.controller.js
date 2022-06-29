@@ -8,6 +8,7 @@ export const getAllUsers = async (req, res) => {
 
     return res.status(200).json(users);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -21,6 +22,7 @@ export const updateUser = async (req, res) => {
 
     return res.status(200).json(user);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -33,6 +35,7 @@ export const getCollegesInfo = async (req, res) => {
 
     return res.status(200).json(colleges);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -47,6 +50,7 @@ export const addCollegeInfo = async (req, res) => {
 
     return res.status(200).json(college);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Server error" });
   }
 };

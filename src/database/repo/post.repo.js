@@ -141,8 +141,6 @@ class PostRepo {
         [result.comments[i].uid]
       );
 
-      console.log(rows[0]);
-
       result.comments[i].profilePicUrl = rows[0].profile_pic_url;
     }
 

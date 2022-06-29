@@ -30,8 +30,6 @@ export const signup = async (req, res) => {
 
     const passwordHash = await bcrypt.hash(password, 10);
 
-    console.log(gravatar.url(email, { protocol: "https" }));
-
     const user = {
       uid: userHash,
       password: passwordHash,
@@ -61,7 +59,7 @@ export const signup = async (req, res) => {
 
     res.status(200).json({ message: "Profile created Successfully" });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Server error" });
   }
 };
@@ -100,7 +98,7 @@ export const login = async (req, res) => {
       res.status(200).json(token);
     });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Server error" });
   }
 };
@@ -117,7 +115,7 @@ export const verify = async (req, res) => {
 
     return res.status(201).json({ message: "User successfully verified" });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(501).json({ error: "Server error" });
   }
 };
@@ -127,11 +125,9 @@ export const getUser = async (req, res) => {
     const { uid } = req;
     const user = await AuthRepo.getUser(uid);
 
-    console.log(user);
-
     res.status(200).json({ user });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Server error" });
   }
 };

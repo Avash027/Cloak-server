@@ -25,7 +25,7 @@ export const getPost = async (req, res) => {
 
     res.status(200).json(rows);
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).send({ error: "Server error" });
   }
 };
@@ -40,7 +40,7 @@ export const getOnePost = async (req, res) => {
 
     return res.status(200).json(comments);
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "error" });
   }
 };
@@ -54,6 +54,7 @@ export const postComment = async (req, res) => {
 
     res.status(200).json({ message: "Commented on the post" });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Server error" });
   }
 };
@@ -67,7 +68,7 @@ export const updateLike = async (req, res) => {
 
     res.status(200).send({ message: "You liked the post" });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Server error" });
   }
 };
@@ -81,7 +82,7 @@ export const updateBookmarks = async (req, res) => {
 
     res.status(200).send({ message: "You liked the post" });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Server error" });
   }
 };
