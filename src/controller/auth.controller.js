@@ -4,6 +4,7 @@ import randomstring from "randomstring";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import sgMail from "@sendgrid/mail";
+import gravatar from "gravatar";
 
 export const signup = async (req, res) => {
   try {
@@ -29,26 +30,31 @@ export const signup = async (req, res) => {
 
     const passwordHash = await bcrypt.hash(password, 10);
 
+    console.log(gravatar.url(email, { protocol: "https" }));
+
     const user = {
       uid: userHash,
       password: passwordHash,
       verificationToken: randomstring.generate(5),
       collegeName: rows[0].college_name,
-      profilePic: `https://avatars.dicebear.com/api/bott/${randomstring.generate(
-        5
-      )}.svg`,
+      profilePic: gravatar.url(email, { protocol: "https" }),
     };
 
     await AuthRepo.registerUser(user);
 
     sgMail.setApiKey(process.env.SENDGRID_MAIL_KEY);
 
+    const link =
+      process.env.NODE_ENV === "DEVELOPMENT"
+        ? `http://localhost:3000/verify/${user.verificationToken}`
+        : `https://cloak-gilt.vercel.app/verify/${user.verificationToken}`;
+
     const msg = {
       to: email,
       from: "avashmitra007@gmail.com",
       subject: "Visit the link to activate your account",
       text: "Visit the link to activate your account",
-      html: `<a href = "https://cloak-gilt.vercel.app/verify/${user.verificationToken}">Click here</a>`,
+      html: `<strong>To activate your account click here</strong><a href = "${link}">Click here</a>`,
     };
 
     await sgMail.send(msg);
@@ -86,6 +92,7 @@ export const login = async (req, res) => {
 
     const payLoad = {
       uid: user.uid,
+      admin: user.admin,
     };
 
     jwt.sign(payLoad, process.env.SECRET, { expiresIn: "2d" }, (err, token) => {

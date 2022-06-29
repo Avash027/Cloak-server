@@ -4,6 +4,7 @@ import cors from "cors";
 import database from "./config/db.js";
 import auth from "./routes/auth.routes.js";
 import post from "./routes/post.routes.js";
+import admin from "./routes/admin.routes.js";
 
 class App {
   constructor() {
@@ -28,6 +29,7 @@ class App {
   configureRouters() {
     this.app.use("/api", auth);
     this.app.use("/api", post);
+    this.app.use("/api/admin", admin);
     this.app.get("/test", (req, res) => {
       res.send("Hello World");
     });
