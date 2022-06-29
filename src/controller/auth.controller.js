@@ -57,7 +57,12 @@ export const signup = async (req, res) => {
 
     await sgMail.send(msg);
 
-    res.status(200).json({ message: "Profile created Successfully" });
+    res
+      .status(200)
+      .json({
+        message:
+          "Profile created Successfully and a verificatoion email has been sent",
+      });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Server error" });

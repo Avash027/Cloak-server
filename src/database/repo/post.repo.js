@@ -171,12 +171,12 @@ class PostRepo {
       [uid, offset, limit]
     );
 
-    for (let i = 0; i < res.rows.length; i++) {
-      const { rows } = await pool.query(
-        `SELECT profile_pic_url,college_name from user_auth where uid = $1;`,
-        [res.rows[i].uid]
-      );
+    const { rows } = await pool.query(
+      `SELECT profile_pic_url,college_name from user_auth where uid = $1;`,
+      [uid]
+    );
 
+    for (let i = 0; i < res.rows.length; i++) {
       res.rows[i].profilePicUrl = rows[0].profile_pic_url;
       res.rows[i].collegeName = rows[0].college_name;
 
