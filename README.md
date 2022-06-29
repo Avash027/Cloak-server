@@ -4,8 +4,9 @@
 
 **Webapp live at: [Here](https://cloak-gilt.vercel.app/)**
 
-### Libraries and Frameworks used
+### Libraries, Frameworks and Tech used
 
+- Used **Postgres** for database
 - **Sendgrid** for sending verification mail
 - **Tensorflow** for flagging offensive/harmful content
 - **Express** for the backend framework
