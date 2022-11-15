@@ -2,7 +2,6 @@
 
 <p align="center"> Connect with folks from universities across the globe. Share your stories, experiences and feedback</p>
 
-**Webapp live at: [Here](https://cloak-gilt.vercel.app/)**
 
 ### Libraries, Frameworks and Tech used
 
